@@ -17,9 +17,9 @@
   </properties>
 
   <scm>
-    <connection>scm:git:https://github.com/kiegroup/kie-build-helper-jenkins-plugin.git</connection>
+    <connection>scm:git:https://github.com/mbiarnes/kie-build-helper-jenkins-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:kiegroup/kie-build-helper-jenkins-plugin.git</developerConnection>
-    <url>https://github.com/kiegroup/kie-build-helper-jenkins-plugin</url>
+    <url>https://github.com/mbiarnes/kie-build-helper-jenkins-plugin</url>
   </scm>
 
   <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->

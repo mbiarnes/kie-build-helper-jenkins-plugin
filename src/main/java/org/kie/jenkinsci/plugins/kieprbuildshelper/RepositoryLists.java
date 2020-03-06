@@ -26,7 +26,7 @@ import org.apache.commons.io.IOUtils;
 
 public class RepositoryLists {
 
-    public static final String KIE_ORG_UNIT = "kiegroup";
+    public static final String KIE_ORG_UNIT = "mbiarnes";
     public static final GitHubRepository KIE_BOOTSTRAP_REPO = new GitHubRepository(KIE_ORG_UNIT, "droolsjbpm-build-bootstrap");
 
 
@@ -46,7 +46,7 @@ public class RepositoryLists {
             	repos.add(new GitHubRepository(KIE_ORG_UNIT, repoName));
             }
         } catch (IOException e) {
-            throw new RuntimeException("Can not fetch kiegroup repository list '" + reposFileUrl + "'!", e);
+            throw new RuntimeException("Can not fetch mbiarnes repository list '" + reposFileUrl + "'!", e);
         }
         return repos;
     }
@@ -65,19 +65,19 @@ public class RepositoryLists {
      */
     public static List<Tuple<GitHubRepository, GitBranch>> filterOutUnnecessaryRepos(List<Tuple<GitHubRepository, GitBranch>> repos, GitHubRepository baseRepo) {
     	// nothing depends on stuff from -tools repo
-        repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "droolsjbpm-tools")));
+        repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "droolsjbpm-tools")));
         // no need to build docs as other repos do not depend on them
-        repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "kie-docs")));
+        repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "kie-docs")));
 
         if ("kie-docs".equals(baseRepo.getName())) {
             // we only need to build repos up to "guvnor" as that's what kie-docs-code depends on
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "kie-wb-playground")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "kie-wb-common")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "drools-wb")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "optaplanner-wb")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "jbpm-designer")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "jbpm-wb")));
-            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("kiegroup", "kie-wb-distributions")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "kie-wb-playground")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "kie-wb-common")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "drools-wb")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "optaplanner-wb")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "jbpm-designer")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "jbpm-wb")));
+            repos.removeIf(repo -> repo._1().equals(new GitHubRepository("mbiarnes", "kie-wb-distributions")));
         }
         return repos;
     }
